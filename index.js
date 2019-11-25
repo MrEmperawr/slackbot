@@ -1,7 +1,7 @@
 const SlackBot = require('slackbots')
 const dotenv = require('dotenv')
 
-const { quoteMe, runHelp } = require('./src/actions')
+const { quoteMe, runHelp, starwarsFilms } = require('./src/actions')
 
 dotenv.config()
 
@@ -11,13 +11,15 @@ const bot = new SlackBot({
 })
 
 const handleMessage = (message) => {
+
+    switch (message) {}
     if(message.includes(' quote me')) {
         quoteMe(bot)
     } else if(message.includes(' help')) {
         runHelp(bot)
-    } else if (message.includes(' star wars')) {
-        
-    })
+    } else if (message.includes(' star wars film please!')) {
+        starwarsFilms(bot)
+    } 
 }
 
 bot.on('start', () => {
