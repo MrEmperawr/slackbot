@@ -72,7 +72,26 @@ const starwarsCharacter = async (bot) => {
             'random',
             `:zap: Woah there, here's *${name}* who weighs ${mass}kg, is ${height}cm tall and was born in ${birthYear}.`,
             params
-            )
+        )
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+const swansonQuote = async (bot) => {
+    try {
+        const res = await axios.get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+        const quote = res.data[0]
+        console.log(quote)
+        const params = {
+            icon_emoji: ':male-technologist:'
+        }  
+        bot.postMessageToChannel(
+            'random',
+            `:zap: Coming right up! Here's the wisdom you requested: \n \n ${quote}.`,
+            params
+        )
     }
     catch (error) {
         console.log(error)
@@ -84,4 +103,5 @@ module.exports = {
       runHelp,
       starwarsFilm,
       starwarsCharacter,
+      swansonQuote,
 }
