@@ -19,6 +19,19 @@ const quoteMe = (bot) => {
       }).catch(error => console.log(error))
 }
 
+const runHelp = (bot) => {
+    const params = {
+        icon_emoji: ':question:'
+    }
+
+    bot.postMessageToChannel(
+        'random',
+        `Type *@megatron* with *quote me* to get a sweet quote or  *help* to get this instruction again!`,
+        params
+    );
+}
+
 module.exports = {
-      quoteMe
+      quoteMe,
+      runHelp,
 }
