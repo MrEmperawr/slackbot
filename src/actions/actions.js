@@ -23,12 +23,12 @@ const quoteMe = async (bot) => {
 
 const runHelp = (bot) => {
     const params = {
-        icon_emoji: ':question:'
+        icon_emoji: ':male-detective:'
     }
 
     bot.postMessageToChannel(
         'random',
-        `Type *@megatron* with *quote me* to get a sweet quote or  *help* to get this instruction again!`,
+        `Type *@megatron* with *"quote me"* to get a sweet quote, *"star wars film please"* for info about a SW movie, *"star wars character please"* for a SW character, or  *help* to get these instructions again!`,
         params
     );
 }
@@ -58,19 +58,19 @@ const starwarsFilm = async (bot) => {
 
 const starwarsCharacter = async (bot) => {
     try {
-        const res = await axios.get('https://swapi.co/api/films/')
-        const films = res.data.results
-        console.log(films)
-        const randomPick = Math.floor(Math.random() * films.length)
-        const film = films[randomPick].title
-        const openingCrawlText = films[randomPick].opening_crawl
-        const director = films[randomPick].director
+        const res = await axios.get('https://swapi.co/api/people/')
+        const characters = res.data.results
+        const randomPick = Math.floor(Math.random() * characters.length)
+        const name = characters[randomPick].name
+        const mass = characters[randomPick].mass
+        const height = characters[randomPick].height
+        const birthYear = characters[randomPick].birth_year
         const params = {
             icon_emoji: ':male-technologist:'
         }            
         bot.postMessageToChannel(
             'random',
-            `:zap: Here's a Star Wars film for you: *${film}* \n \n *Opening Crawl*: ${openingCrawlText} \n \n Directed by: ${director}`,
+            `:zap: Woah there, here's *${name}* who weighs ${mass}kg, is ${height}cm tall and was born in ${birthYear}.`,
             params
             )
     }
@@ -83,4 +83,5 @@ module.exports = {
       quoteMe,
       runHelp,
       starwarsFilm,
+      starwarsCharacter,
 }
