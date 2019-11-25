@@ -28,7 +28,7 @@ const runHelp = (bot) => {
 
     bot.postMessageToChannel(
         'random',
-        `Type *@megatron* with any of these prompts: *quote me*, *star wars film please*, *star wars character please* or *get me a swanson*!`,
+        `Type *@megatron* with any of these prompts: *quote me*, *star wars film please*, *star wars character please*, *get me a swanson* or *help* if you want to see these instructions again!`,
         params
     );
 }
