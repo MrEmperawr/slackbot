@@ -15,7 +15,9 @@ const handleMessage = (message) => {
         quoteMe(bot)
     } else if(message.includes(' help')) {
         runHelp(bot)
-    }
+    } else if (message.includes(' star wars')) {
+        
+    })
 }
 
 bot.on('start', () => {
@@ -30,14 +32,12 @@ bot.on('start', () => {
     )
 })
 
-// bot.on('error', (err) => {
-//     console.log(err);
-// })
+bot.on('error', (err) => {
+    console.log(err);
+})
 
-// Message Handler
 bot.on('message', (data) => {
     if (data.type !== 'message') return
-    console.log(data.text)
     const message = data.text
     handleMessage(message)
 })
