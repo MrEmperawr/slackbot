@@ -11,7 +11,7 @@ const bot = new SlackBot({
 })
 
 const handleMessage = (message) => {
-    if(message.includes(' quote me')) {
+    if (message.includes(' quote me')) {
         quoteMe(bot)
     } else if(message.includes(' help')) {
         runHelp(bot)
